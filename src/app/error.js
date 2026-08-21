@@ -1,0 +1,2 @@
+"use client";
+export default function ErrorPage({reset}){return <main className="shell page-hero"><div className="detail-panel"><span className="eyebrow">Something went wrong</span><h1>We hit a temporary problem.</h1><p>Try the page again. Your saved comparison and theme are stored locally in this browser.</p><button className="btn btn-primary" onClick={()=>reset()}>Try again</button></div></main>}

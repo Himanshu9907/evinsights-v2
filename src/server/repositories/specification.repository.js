@@ -1,0 +1,6 @@
+import { query } from "../db.js";
+const GROUPS=['battery','performance','dimensions','safety','features'];
+function normalize(row){return row?{...(row.payload||{}),...(row.data||{}),id:row.id,vehicleId:row.vehicle_id}:null;}
+export async function getAllSpecifications(){const {rows}=await query(`SELECT * FROM specifications ORDER BY type,id`);const result=Object.fromEntries(GROUPS.map(g=>[g,[]]));for(const row of rows){if(result[row.type])result[row.type].push(normalize(row));}return result;}
+export async function getSpecificationsByIds(idsByGroup={}){const result=Object.fromEntries(GROUPS.map(g=>[g,[]]));for(const group of GROUPS){const ids=Array.isArray(idsByGroup[group])?idsByGroup[group]:[];if(!ids.length)continue;const {rows}=await query(`SELECT * FROM specifications WHERE type=$1 AND id=ANY($2::text[])`,[group,ids]);result[group]=rows.map(normalize);}return result;}
+export async function getSpecificationsForVehicle(vehicleId){const {rows}=await query(`SELECT * FROM specifications WHERE vehicle_id=$1 ORDER BY type,id`,[vehicleId]);const result=Object.fromEntries(GROUPS.map(g=>[g,[]]));for(const row of rows){if(result[row.type])result[row.type].push(normalize(row));}return result;}

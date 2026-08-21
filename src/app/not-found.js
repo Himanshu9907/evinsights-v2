@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <main className="shell page-hero"><span className="eyebrow">404</span><h1>That page moved.</h1><p>Try the EV directory or head back to the EVInsights homepage.</p><div style={{display:'flex',gap:10}}><Link className="btn btn-primary" href="/">Home</Link><Link className="btn btn-secondary" href="/cars">Browse EVs</Link></div></main>}

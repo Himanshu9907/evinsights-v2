@@ -1,0 +1,1 @@
+export default function Loading(){return <main className="shell page-hero"><div className="detail-panel"><span className="eyebrow">EVInsights</span><h1>Loading vehicle intelligence…</h1><p>Fetching the latest source-backed records.</p></div></main>}

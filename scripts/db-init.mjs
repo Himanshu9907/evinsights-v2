@@ -1,0 +1,10 @@
+import 'dotenv/config';
+import fs from 'node:fs/promises';
+import pg from 'pg';
+const { Client } = pg;
+if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is required');
+const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: /sslmode=require|neon|supabase/i.test(process.env.DATABASE_URL) ? { rejectUnauthorized:false } : undefined });
+await client.connect();
+await client.query(await fs.readFile(new URL('../database/schema.sql', import.meta.url), 'utf8'));
+await client.end();
+console.log('PostgreSQL schema ready.');
