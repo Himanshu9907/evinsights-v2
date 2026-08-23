@@ -165,6 +165,7 @@
     |-- window.svg
 |-- README.md
 |-- scripts
+    |-- add-10-evs-to-neon.mjs
     |-- data-check.mjs
     |-- db-init.mjs
     |-- db-seed.mjs
@@ -250,6 +251,7 @@
             |-- ReviewsSection.jsx
             |-- StatsSection.jsx
             |-- WhyEVInsights.jsx
+        |-- localized-price.jsx
         |-- navbar
             |-- navbar.css
             |-- Navbar.jsx
