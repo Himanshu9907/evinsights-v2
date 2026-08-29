@@ -166,12 +166,27 @@
 |-- README.md
 |-- scripts
     |-- add-10-evs-to-neon.mjs
+    |-- add-20-evs-to-neon.mjs
+    |-- add-be6-images.mjs
+    |-- add-e-vitara-images.mjs
+    |-- add-mahindra-be6.mjs
+    |-- add-punch-ev-images.mjs
+    |-- add-tata-punch.mjs
+    |-- add-tata-tigor-ev.mjs
+    |-- add-vitara.mjs
+    |-- add-xev-9.mjs
+    |-- add-xev-9e-images.mjs
     |-- data-check.mjs
     |-- db-init.mjs
     |-- db-seed.mjs
     |-- migrate-curvv-to-neon.mjs
+    |-- repair-cardekho-images.mjs
+    |-- update-mahindra-be6-performance.mjs
 |-- src
     |-- app
+        |-- about
+            |-- about.css
+            |-- page.js
         |-- api
             |-- brands
                 |-- route.js
@@ -210,6 +225,9 @@
             |-- page.js
         |-- compare
             |-- page.js
+        |-- contact
+            |-- contact.css
+            |-- page.js
         |-- error.js
         |-- favicon.ico
         |-- globals.css
@@ -221,6 +239,9 @@
         |-- loading.js
         |-- not-found.js
         |-- page.js
+        |-- privacy-policy
+            |-- page.js
+            |-- privacy.css
         |-- providers.jsx
         |-- reviews
             |-- page.js
@@ -228,6 +249,9 @@
                 |-- page.js
         |-- robots.js
         |-- sitemap.js
+        |-- terms
+            |-- page.js
+            |-- terms.css
         |-- vehicles
             |-- [slug]
                 |-- page.js
@@ -265,6 +289,7 @@
             |-- NavbarSearch.jsx
             |-- NavbarTheme.jsx
         |-- vehicle-card.jsx
+        |-- vehicle-emi-calculator.jsx
     |-- config
         |-- global-markets.js
     |-- context

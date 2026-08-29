@@ -1,3 +1,119 @@
+// import Link from "next/link";
+// import VehicleCard from "@/components/vehicle-card";
+
+// export default function FeaturedEVs({
+//   vehicles = [],
+//   brands = [],
+// }) {
+//   const brandMap = new Map(
+//     brands.map((brand) => [brand.id, brand])
+//   );
+
+//   const featured = vehicles
+//     .filter((vehicle) => vehicle?.verification?.status === "approved")
+//     .filter((vehicle) => vehicle?.metadata?.featured)
+//     .slice(0, 8);
+
+//   return (
+//     <section className="section home-featured">
+//       <div className="shell">
+//         <div className="section-head">
+//           <div>
+//             <span className="eyebrow">EV directory</span>
+
+//             <h2>Featured electric cars</h2>
+
+//             <p className="section-lead">
+//               Explore some of the most interesting electric vehicles
+//               currently tracked by EVInsights.
+//             </p>
+//           </div>
+
+//           <Link href="/cars" className="btn btn-secondary">
+//             View all EVs →
+//           </Link>
+//         </div>
+
+//         {featured.length > 0 ? (
+//           <div className="vehicle-grid">
+//             {featured.map((vehicle) => (
+//               <VehicleCard
+//                 key={vehicle.id || vehicle.slug}
+//                 vehicle={vehicle}
+//                 brand={brandMap.get(vehicle.brandId)}
+//               />
+//             ))}
+//           </div>
+//         ) : (
+//           <div className="home-empty">
+//             Featured EVs will appear here once vehicles are available.
+//           </div>
+//         )}
+//       </div>
+//     </section>
+//   );
+// }
+
+// import Link from "next/link";
+// import VehicleCard from "@/components/vehicle-card";
+
+// export default function FeaturedEVs({
+//   vehicles = [],
+//   brands = [],
+// }) {
+//   const brandMap = new Map(
+//     brands.map((brand) => [brand.id, brand])
+//   );
+
+//   const featured = vehicles
+//     .filter(
+//       (vehicle) =>
+//         vehicle?.verification?.status === "approved"
+//     )
+//     .slice(0, 8);
+
+//   return (
+//     <section className="section home-featured">
+//       <div className="shell">
+//         <div className="section-head">
+//           <div>
+//             <span className="eyebrow">EV directory</span>
+
+//             <h2>Featured electric cars</h2>
+
+//             <p className="section-lead">
+//               Explore some of the most interesting electric vehicles
+//               currently tracked by EVInsights.
+//             </p>
+//           </div>
+
+//           <Link href="/cars" className="btn btn-secondary">
+//             View all EVs →
+//           </Link>
+//         </div>
+
+//         {featured.length > 0 ? (
+//           <div className="vehicle-grid">
+//             {featured.map((vehicle) => (
+//               <VehicleCard
+//                 key={vehicle.id || vehicle.slug}
+//                 vehicle={vehicle}
+//                 brand={brandMap.get(
+//                   vehicle.brandId
+//                 )}
+//               />
+//             ))}
+//           </div>
+//         ) : (
+//           <div className="home-empty">
+//             Featured EVs will appear here once vehicles are available.
+//           </div>
+//         )}
+//       </div>
+//     </section>
+//   );
+// }
+
 import Link from "next/link";
 import VehicleCard from "@/components/vehicle-card";
 
@@ -9,46 +125,94 @@ export default function FeaturedEVs({
     brands.map((brand) => [brand.id, brand])
   );
 
-  const featured = vehicles
-    .filter((vehicle) => vehicle?.verification?.status === "approved")
-    .filter((vehicle) => vehicle?.metadata?.featured)
+  /*
+   * Show approved/verified vehicles.
+   * If metadata.featured is available, prefer featured vehicles.
+   * Otherwise fall back to verified vehicles.
+   */
+
+  const featuredVehicles = vehicles
+    .filter((vehicle) => {
+      const approved =
+        vehicle?.verification?.status === "approved";
+
+      const verified =
+        vehicle?.verification?.verified === true;
+
+      return approved || verified;
+    })
+    .filter((vehicle) => vehicle)
     .slice(0, 8);
 
   return (
     <section className="section home-featured">
       <div className="shell">
+
+        {/* ================================
+            SECTION HEADER
+        ================================= */}
+
         <div className="section-head">
           <div>
-            <span className="eyebrow">EV directory</span>
+            <span className="eyebrow">
+              EV directory
+            </span>
 
-            <h2>Featured electric cars</h2>
+            <h2>
+              Featured electric cars
+            </h2>
 
             <p className="section-lead">
-              Explore some of the most interesting electric vehicles
-              currently tracked by EVInsights.
+              Explore some of the most interesting
+              electric vehicles currently tracked by
+              EVInsights.
             </p>
           </div>
 
-          <Link href="/cars" className="btn btn-secondary">
+          <Link
+            href="/cars"
+            className="btn btn-secondary"
+          >
             View all EVs →
           </Link>
         </div>
 
-        {featured.length > 0 ? (
+        {/* ================================
+            VEHICLE CARDS
+        ================================= */}
+
+        {featuredVehicles.length > 0 ? (
           <div className="vehicle-grid">
-            {featured.map((vehicle) => (
+
+            {featuredVehicles.map((vehicle) => (
               <VehicleCard
-                key={vehicle.id || vehicle.slug}
+                key={
+                  vehicle.id ||
+                  vehicle.slug
+                }
                 vehicle={vehicle}
-                brand={brandMap.get(vehicle.brandId)}
+                brand={
+                  brandMap.get(
+                    vehicle.brandId
+                  )
+                }
               />
             ))}
+
           </div>
         ) : (
+
+          /* ================================
+             EMPTY STATE
+          ================================= */
+
           <div className="home-empty">
-            Featured EVs will appear here once vehicles are available.
+            Featured EVs will appear here once
+            vehicles are available.
           </div>
+
         )}
+
       </div>
     </section>
   );
