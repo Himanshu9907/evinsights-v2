@@ -1,0 +1,223 @@
+{
+  "id": "kia-carens-clavis-ev",
+  "brandId": "kia",
+  "name": "Kia Carens Clavis EV",
+  "slug": "kia-carens-clavis-ev",
+  "bodyType": "MUV",
+  "fuelType": "electric",
+  "transmission": "Automatic",
+  "driveType": "FWD",
+  "price": {
+    "min": 1803900,
+    "max": 2499900,
+    "currency": "INR",
+    "priceType": "ex-showroom"
+  },
+  "battery": {
+    "capacity": 51.4,
+    "unit": "kWh",
+    "type": "Lithium-ion"
+  },
+  "performance": {
+    "motorPower": 126,
+    "motorPowerUnit": "kW",
+    "maxPower": 169,
+    "maxPowerUnit": "bhp",
+    "maxTorque": 255,
+    "maxTorqueUnit": "Nm",
+    "motorType": "Permanent Magnet Synchronous Motor"
+  },
+  "range": {
+    "claimed": 490,
+    "unit": "km",
+    "standard": "ARAI"
+  },
+  "charging": {
+    "ac": {
+      "power": 11,
+      "unit": "kW",
+      "time": "4:45",
+      "range": "10-100%"
+    },
+    "dc": {
+      "power": 100,
+      "unit": "kW",
+      "time": "39 mins",
+      "range": "10-80%"
+    },
+    "port": "CCS-II"
+  },
+  "dimensions": {
+    "length": 4550,
+    "width": 1800,
+    "height": 1708,
+    "wheelbase": 2780,
+    "groundClearance": 200,
+    "unit": "mm"
+  },
+  "seating": {
+    "capacity": [
+      6,
+      7
+    ]
+  },
+  "suspension": {
+    "front": "MacPherson Strut suspension",
+    "rear": "Rear twist beam"
+  },
+  "brakes": {
+    "front": "Disc",
+    "rear": "Disc"
+  },
+  "steering": {
+    "type": "Electric",
+    "column": "Tilt & Telescopic"
+  },
+  "tyres": {
+    "size": "215 / 55 R17",
+    "type": "Radial Tubeless"
+  },
+  "safety": {
+    "airbags": 6,
+    "abs": true,
+    "brakeAssist": true,
+    "ebd": true,
+    "esc": true,
+    "tpms": true,
+    "rearCamera": "With Guidedlines",
+    "isofix": true,
+    "hillAssist": true,
+    "hillDescentControl": true,
+    "antiPinchPowerWindows": "All Windows"
+  },
+  "infotainment": {
+    "touchscreen": "12.25 inch",
+    "speakers": 8,
+    "features": [
+      "HD Touchscreen Navigation with Kia Connect",
+      "BOSE Premium Sound System with 8 Speakers",
+      "Wireless Phone Projection"
+    ]
+  },
+  "interior": {
+    "digitalClusterSize": "12.25 inch",
+    "upholstery": "Leatherette",
+    "ambientLightingColours": 64
+  },
+  "exterior": {
+    "sunroof": "Panoramic",
+    "orvm": "Powered & Folding",
+    "headlamps": "LED",
+    "taillights": "LED",
+    "fogLamps": "LED",
+    "antenna": "Shark Fin",
+    "frunk": "25 L"
+  },
+  "convenience": {
+    "ventilatedSeats": true,
+    "electricFrontSeats": true,
+    "automaticClimateControl": true,
+    "cruiseControl": true,
+    "parkingSensors": "Front & Rear",
+    "rearAcVents": true,
+    "keylessEntry": true,
+    "pushButtonStart": true,
+    "usbFrontRear": true,
+    "driveModes": [
+      "ECO",
+      "CITY",
+      "SPORT"
+    ],
+    "driveModeCount": 3
+  },
+  "connectivity": {
+    "app": "Kia Connect",
+    "otaUpdates": true,
+    "liveTrafficNavigation": true,
+    "remoteVehicleStatus": true,
+    "remoteAc": true,
+    "remoteDoorLockUnlock": true,
+    "geoFenceAlert": true,
+    "sosButton": true,
+    "eCall": true,
+    "inCarApps": "Kia Connect"
+  },
+  "regenerativeBraking": {
+    "levels": 4
+  },
+  "variants": [
+    {
+      "name": "HTK Plus",
+      "price": 1803900
+    },
+    {
+      "name": "HTX E",
+      "price": 1999900
+    },
+    {
+      "name": "HTX E 6Str",
+      "price": 1999900
+    },
+    {
+      "name": "HTX",
+      "price": 2053900
+    },
+    {
+      "name": "HTX 6Str",
+      "price": 2053900
+    },
+    {
+      "name": "HTX E ER",
+      "price": 2203900
+    },
+    {
+      "name": "HTX E ER 6Str",
+      "price": 2203900
+    },
+    {
+      "name": "HTX ER",
+      "price": 2253900
+    },
+    {
+      "name": "HTX ER 6Str",
+      "price": 2253900
+    },
+    {
+      "name": "GTX ER",
+      "price": 2303900
+    },
+    {
+      "name": "GTX ER 6Str",
+      "price": 2303900
+    },
+    {
+      "name": "HTX Plus ER",
+      "price": 2453900
+    },
+    {
+      "name": "HTX Plus ER 6Str",
+      "price": 2453900
+    },
+    {
+      "name": "GTX Plus ER",
+      "price": 2499900
+    },
+    {
+      "name": "GTX Plus ER 6Str",
+      "price": 2499900
+    },
+    {
+      "name": "X-Line ER",
+      "price": 2499900
+    },
+    {
+      "name": "X-Line ER 6Str",
+      "price": 2499900
+    }
+  ],
+  "source": {
+    "name": "CarDekho",
+    "url": "https://www.cardekho.com/kia/carens-clavis-ev/specs"
+  },
+  "lastUpdated": "2026-08-31"
+}

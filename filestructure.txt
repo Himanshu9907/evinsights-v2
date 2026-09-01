@@ -141,6 +141,7 @@
             |-- .gitkeep
         |-- records
             |-- .gitkeep
+            |-- vehicle_kia_carens_clavis_ev.json
 |-- DEPLOYMENT.md
 |-- eslint.config.mjs
 |-- GLOBAL_DATA_MODEL.md
@@ -170,9 +171,13 @@
     |-- add-be6-images.mjs
     |-- add-e-vitara-images.mjs
     |-- add-mahindra-be6.mjs
+    |-- add-nexon.mjs
     |-- add-punch-ev-images.mjs
     |-- add-tata-punch.mjs
+    |-- add-tata-sierra-ev.mjs
     |-- add-tata-tigor-ev.mjs
+    |-- add-tesla-model-y.mjs
+    |-- add-tiago.mjs
     |-- add-vitara.mjs
     |-- add-xev-9.mjs
     |-- add-xev-9e-images.mjs
@@ -181,6 +186,7 @@
     |-- db-seed.mjs
     |-- migrate-curvv-to-neon.mjs
     |-- repair-cardekho-images.mjs
+    |-- seed-tata-curvv-ev.mjs
     |-- update-mahindra-be6-performance.mjs
 |-- src
     |-- app
@@ -354,3 +360,4 @@
     |-- styles
         |-- cars.css
         |-- compare.css
+|-- test-neon.mjs
