@@ -23,43 +23,47 @@
 //    CONSTANTS
 // ========================================================= */
 
-// const VEHICLE_ID = "mahindra-xev-9e";
+// const VEHICLE_ID = "kia-carens-clavis-ev";
 
-// const SOURCE = "Spinny";
+// const SOURCE = "Cars24";
 
 // const SOURCE_URL =
-//   "https://www.spinny.com/";
+//   "https://www.cars24.com/";
 
 // const now = new Date();
 
 // /* =========================================================
-//    MAHINDRA XEV 9e IMAGES
+//    KIA CARENS CLAVIS EV IMAGES
 // ========================================================= */
 
 // const images = [
 //   {
-//     id: "bbd37a8695704b6e9cdd2c041aa76844",
-//     url: "https://mda.spinny.com/sp-file-system/public/2026-03-20/bbd37a8695704b6e9cdd2c041aa76844/raw/file.jpg",
+//     id: "carens-clavis-left-side-view",
+//     url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20Left%20Side%20View-2d95ab4f-69a5-4145-949f-d729d1bb8e50.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
 //   },
 //   {
-//     id: "0a8fa220727b4fde86842b214d5c4be7",
-//     url: "https://mda.spinny.com/sp-file-system/public/2026-03-20/0a8fa220727b4fde86842b214d5c4be7/raw/file.jpg",
+//     id: "carens-clavis-right-diagonal-view",
+//     url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20Right%20Diagonal%20View-bbe7f51f-c984-4af6-a764-ebe216d11399.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
 //   },
 //   {
-//     id: "58ff3a27b6424d99bb6d9bb2884740e7",
-//     url: "https://mda.spinny.com/sp-file-system/public/2026-03-20/58ff3a27b6424d99bb6d9bb2884740e7/raw/file.jpg",
+//     id: "carens-clavis-rear-right-side-view",
+//     url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20Rear%20Right%20Side%20View-d4b5550a-8f3c-43fa-8986-fbb94c57915c.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
 //   },
 //   {
-//     id: "99de473f1e7345fbb6236d057556021c",
-//     url: "https://mda.spinny.com/sp-file-system/public/2026-03-20/99de473f1e7345fbb6236d057556021c/raw/file.jpg",
+//     id: "carens-clavis-left-side-view-2",
+//     url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20%20Left%20Side%20View-f54e17a5-4e48-4cfa-a318-abe2e911adc7.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
 //   },
 //   {
-//     id: "9a9e70c5a7a347f9bcf560bfe86ceba4",
-//     url: "https://mda.spinny.com/sp-file-system/public/2026-03-20/9a9e70c5a7a347f9bcf560bfe86ceba4/raw/file.jpg",
+//     id: "carens-clavis-dashboard-view",
+//     url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20Dashboard%20View-6e3cd573-e0cb-4d4c-9d3c-0de3af054c96.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
 //   },
 //   {
-//     id: "4df7e4b03b58454f8da48691f5fd83a6",
-//     url: "https://mda.spinny.com/sp-file-system/public/2026-03-20/4df7e4b03b58454f8da48691f5fd83a6/raw/file.jpg",
+//     id: "carens-clavis-all-seats-top-view",
+//     url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20All%20Seats%20Top%20View-3d9f2db3-7864-4237-8196-b8b9c2989b1f.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
+//   },
+//   {
+//     id: "carens-clavis-all-airbags",
+//     url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20%20All%20Airbags-c02b80ba-3793-46f5-bce8-e0969e01c7e0.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
 //   },
 // ];
 
@@ -72,7 +76,7 @@
 
 //   try {
 //     console.log("=================================================");
-//     console.log("🖼️ EVINSIGHTS - ADD MAHINDRA XEV 9e IMAGES");
+//     console.log("🖼️ EVINSIGHTS - ADD KIA CARENS CLAVIS EV IMAGES");
 //     console.log("=================================================\n");
 
 //     await client.query("BEGIN");
@@ -81,7 +85,7 @@
 //        1. VERIFY VEHICLE
 //     ===================================================== */
 
-//     console.log("🚗 Checking Mahindra XEV 9e...");
+//     console.log("🚗 Checking Kia Carens Clavis EV...");
 
 //     const vehicleCheck = await client.query(
 //       `
@@ -109,7 +113,7 @@
 //     ===================================================== */
 
 //     console.log(
-//       "\n🧹 Removing existing XEV 9e media..."
+//       "\n🧹 Removing existing Kia Carens Clavis EV media..."
 //     );
 
 //     await client.query(
@@ -127,7 +131,7 @@
 //     ===================================================== */
 
 //     console.log(
-//       "\n🖼️ Inserting XEV 9e images...\n"
+//       "\n🖼️ Inserting Kia Carens Clavis EV images...\n"
 //     );
 
 //     for (let index = 0; index < images.length; index++) {
@@ -160,7 +164,7 @@
 //           VEHICLE_ID,
 //           "image",
 //           image.url,
-//           `Mahindra XEV 9e image ${index + 1}`,
+//           `Kia Carens Clavis EV image ${index + 1}`,
 //           JSON.stringify({
 //             source: SOURCE,
 //             sourceUrl: SOURCE_URL,
@@ -187,7 +191,7 @@
 //     ===================================================== */
 
 //     console.log(
-//       "\n🔗 Updating XEV 9e primary image..."
+//       "\n🔗 Updating Kia Carens Clavis EV primary image..."
 //     );
 
 //     await client.query(
@@ -238,7 +242,7 @@
 //     ===================================================== */
 
 //     console.log(
-//       "\n🔎 Verifying XEV 9e media..."
+//       "\n🔎 Verifying Kia Carens Clavis EV media..."
 //     );
 
 //     const mediaCheck = await client.query(
@@ -281,7 +285,7 @@
 //     );
 
 //     console.log(
-//       "🎉 MAHINDRA XEV 9e IMAGE INSERT COMPLETED"
+//       "🎉 KIA CARENS CLAVIS EV IMAGE INSERT COMPLETED"
 //     );
 
 //     console.log(
@@ -316,6 +320,7 @@
 //     console.log(
 //       "\n✅ Database transaction committed."
 //     );
+
 //   } catch (error) {
 //     await client.query("ROLLBACK");
 
@@ -330,10 +335,11 @@
 //     console.error(error);
 
 //     console.error(
-//       "\n⚠️ No partial Mahindra XEV 9e image data was saved."
+//       "\n⚠️ No partial Kia Carens Clavis EV image data was saved."
 //     );
 
 //     process.exitCode = 1;
+
 //   } finally {
 //     client.release();
 //     await pool.end();
@@ -367,47 +373,42 @@ const pool = new Pool({
    CONSTANTS
 ========================================================= */
 
-const VEHICLE_ID = "kia-carens-clavis-ev";
+const VEHICLE_ID = "mg-comet-ev";
 
-const SOURCE = "Cars24";
+const SOURCE = "Spinny";
 
-const SOURCE_URL =
-  "https://www.cars24.com/";
+const SOURCE_URL = "https://www.spinny.com/";
 
 const now = new Date();
 
 /* =========================================================
-   KIA CARENS CLAVIS EV IMAGES
+   MG COMET EV IMAGES
 ========================================================= */
 
 const images = [
   {
-    id: "carens-clavis-left-side-view",
-    url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20Left%20Side%20View-2d95ab4f-69a5-4145-949f-d729d1bb8e50.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
+    id: "91a02857009b4d5cbac05b184ab59aee",
+    url: "https://mda.spinny.com/sp-file-system/public/2026-04-01/91a02857009b4d5cbac05b184ab59aee/raw/file.png",
   },
   {
-    id: "carens-clavis-right-diagonal-view",
-    url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20Right%20Diagonal%20View-bbe7f51f-c984-4af6-a764-ebe216d11399.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
+    id: "b3edcf97692b40b2813c33304ffaa383",
+    url: "https://mda.spinny.com/sp-file-system/public/2026-04-01/b3edcf97692b40b2813c33304ffaa383/raw/file.jpg",
   },
   {
-    id: "carens-clavis-rear-right-side-view",
-    url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20Rear%20Right%20Side%20View-d4b5550a-8f3c-43fa-8986-fbb94c57915c.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
+    id: "2c4482d46e304a4eba160755f78202b1",
+    url: "https://mda.spinny.com/sp-file-system/public/2026-04-01/2c4482d46e304a4eba160755f78202b1/raw/file.jpg",
   },
   {
-    id: "carens-clavis-left-side-view-2",
-    url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20%20Left%20Side%20View-f54e17a5-4e48-4cfa-a318-abe2e911adc7.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
+    id: "036373e863624056bd6936e0f16fa1be",
+    url: "https://mda.spinny.com/sp-file-system/public/2026-04-01/036373e863624056bd6936e0f16fa1be/raw/file.jpg",
   },
   {
-    id: "carens-clavis-dashboard-view",
-    url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20Dashboard%20View-6e3cd573-e0cb-4d4c-9d3c-0de3af054c96.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
+    id: "9a1c44c278a04450a8faae8ff8d7d140",
+    url: "https://mda.spinny.com/sp-file-system/public/2026-04-01/9a1c44c278a04450a8faae8ff8d7d140/raw/file.jpg",
   },
   {
-    id: "carens-clavis-all-seats-top-view",
-    url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20All%20Seats%20Top%20View-3d9f2db3-7864-4237-8196-b8b9c2989b1f.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
-  },
-  {
-    id: "carens-clavis-all-airbags",
-    url: "https://static-cdn.cars24.com/prod/bikes/2025/07/22/Carens%20Clavis%20%20All%20Airbags-c02b80ba-3793-46f5-bce8-e0969e01c7e0.jpg?w=640&dpr=3&optimize=low&format=auto&quality=50",
+    id: "b3edcf97692b40b2813c33304ffaa383-duplicate",
+    url: "https://mda.spinny.com/sp-file-system/public/2026-04-01/b3edcf97692b40b2813c33304ffaa383/raw/file.jpg",
   },
 ];
 
@@ -420,7 +421,7 @@ async function main() {
 
   try {
     console.log("=================================================");
-    console.log("🖼️ EVINSIGHTS - ADD KIA CARENS CLAVIS EV IMAGES");
+    console.log("🖼️ EVINSIGHTS - ADD MG COMET EV IMAGES");
     console.log("=================================================\n");
 
     await client.query("BEGIN");
@@ -429,7 +430,7 @@ async function main() {
        1. VERIFY VEHICLE
     ===================================================== */
 
-    console.log("🚗 Checking Kia Carens Clavis EV...");
+    console.log("🚗 Checking MG Comet EV...");
 
     const vehicleCheck = await client.query(
       `
@@ -457,7 +458,7 @@ async function main() {
     ===================================================== */
 
     console.log(
-      "\n🧹 Removing existing Kia Carens Clavis EV media..."
+      "\n🧹 Removing existing MG Comet EV media..."
     );
 
     await client.query(
@@ -475,7 +476,7 @@ async function main() {
     ===================================================== */
 
     console.log(
-      "\n🖼️ Inserting Kia Carens Clavis EV images...\n"
+      "\n🖼️ Inserting MG Comet EV images...\n"
     );
 
     for (let index = 0; index < images.length; index++) {
@@ -508,7 +509,7 @@ async function main() {
           VEHICLE_ID,
           "image",
           image.url,
-          `Kia Carens Clavis EV image ${index + 1}`,
+          `MG Comet EV image ${index + 1}`,
           JSON.stringify({
             source: SOURCE,
             sourceUrl: SOURCE_URL,
@@ -535,7 +536,7 @@ async function main() {
     ===================================================== */
 
     console.log(
-      "\n🔗 Updating Kia Carens Clavis EV primary image..."
+      "\n🔗 Updating MG Comet EV primary image..."
     );
 
     await client.query(
@@ -586,7 +587,7 @@ async function main() {
     ===================================================== */
 
     console.log(
-      "\n🔎 Verifying Kia Carens Clavis EV media..."
+      "\n🔎 Verifying MG Comet EV media..."
     );
 
     const mediaCheck = await client.query(
@@ -629,7 +630,7 @@ async function main() {
     );
 
     console.log(
-      "🎉 KIA CARENS CLAVIS EV IMAGE INSERT COMPLETED"
+      "🎉 MG COMET EV IMAGE INSERT COMPLETED"
     );
 
     console.log(
@@ -679,7 +680,7 @@ async function main() {
     console.error(error);
 
     console.error(
-      "\n⚠️ No partial Kia Carens Clavis EV image data was saved."
+      "\n⚠️ No partial MG Comet EV image data was saved."
     );
 
     process.exitCode = 1;

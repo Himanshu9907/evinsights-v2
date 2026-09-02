@@ -169,8 +169,10 @@
     |-- add-10-evs-to-neon.mjs
     |-- add-20-evs-to-neon.mjs
     |-- add-be6-images.mjs
+    |-- add-carens-clavis-ev-images.mjs
     |-- add-e-vitara-images.mjs
     |-- add-mahindra-be6.mjs
+    |-- add-mahindra-xuv400-ev.mjs
     |-- add-nexon.mjs
     |-- add-punch-ev-images.mjs
     |-- add-tata-punch.mjs
