@@ -1,8 +1,7 @@
 import { getSiteSnapshot } from "@/server/services/site.service";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://evinsightshub.in";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://evinsightshub.in";
 
 /* ============================================================
    HELPERS
@@ -74,11 +73,299 @@ function getLastModified(item) {
 }
 
 /* ============================================================
-   SITEMAP
+   STATIC PAGES
+============================================================ */
+
+function getStaticPages() {
+  const now = new Date();
+
+  return [
+    {
+      url: `${SITE_URL}/`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+
+    {
+      url: `${SITE_URL}/cars`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.95,
+    },
+
+    {
+      url: `${SITE_URL}/brands`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+
+    {
+      url: `${SITE_URL}/articles`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.85,
+    },
+
+    {
+      url: `${SITE_URL}/reviews`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+
+    {
+      url: `${SITE_URL}/guides`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+
+    {
+      url: `${SITE_URL}/compare`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+
+    /* ========================================================
+       CALCULATORS
+    ======================================================== */
+
+    {
+      url: `${SITE_URL}/calculators/charging-cost`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
+
+    {
+      url: `${SITE_URL}/calculators/charging-time`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
+
+    {
+      url: `${SITE_URL}/calculators/range-estimator`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
+
+    {
+      url: `${SITE_URL}/calculators/running-cost`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
+
+    /* ========================================================
+       INFORMATIONAL PAGES
+    ======================================================== */
+
+    {
+      url: `${SITE_URL}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+
+    {
+      url: `${SITE_URL}/contact`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+
+    {
+      url: `${SITE_URL}/privacy-policy`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+
+    {
+      url: `${SITE_URL}/terms`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+  ];
+}
+
+/* ============================================================
+   VEHICLE PAGES
+============================================================ */
+
+function getVehiclePages(vehicles) {
+  return vehicles
+    .filter((vehicle) => {
+      /*
+       * If verification status exists,
+       * only approved vehicles are included.
+       */
+
+      if (vehicle?.verification?.status) {
+        return vehicle.verification.status === "approved";
+      }
+
+      /*
+       * If normal status exists,
+       * only active/published vehicles are included.
+       */
+
+      if (vehicle?.status) {
+        return (
+          vehicle.status === "active" ||
+          vehicle.status === "published"
+        );
+      }
+
+      /*
+       * If no status information exists,
+       * don't unnecessarily hide the vehicle.
+       */
+
+      return true;
+    })
+    .map((vehicle) => {
+      const slug = getVehicleSlug(vehicle);
+
+      if (!slug) {
+        return null;
+      }
+
+      return {
+        url: `${SITE_URL}/vehicles/${slug}`,
+        lastModified: getLastModified(vehicle),
+        changeFrequency: "weekly",
+        priority: 0.9,
+      };
+    })
+    .filter(Boolean);
+}
+
+/* ============================================================
+   BRAND PAGES
+============================================================ */
+
+function getBrandPages(brands) {
+  return brands
+    .map((brand) => {
+      const slug = getBrandSlug(brand);
+
+      if (!slug) {
+        return null;
+      }
+
+      return {
+        url: `${SITE_URL}/brands/${slug}`,
+        lastModified: getLastModified(brand),
+        changeFrequency: "weekly",
+        priority: 0.75,
+      };
+    })
+    .filter(Boolean);
+}
+
+/* ============================================================
+   ARTICLE PAGES
+============================================================ */
+
+function getArticlePages(content) {
+  return content
+    .filter((item) => {
+      const type = getContentType(item);
+
+      return [
+        "article",
+        "articles",
+        "news",
+        "guide",
+        "guides",
+      ].includes(type);
+    })
+    .map((item) => {
+      const slug = getContentSlug(item);
+
+      if (!slug) {
+        return null;
+      }
+
+      return {
+        url: `${SITE_URL}/articles/${slug}`,
+        lastModified: getLastModified(item),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      };
+    })
+    .filter(Boolean);
+}
+
+/* ============================================================
+   REVIEW PAGES
+============================================================ */
+
+function getReviewPages(content) {
+  return content
+    .filter((item) => {
+      const type = getContentType(item);
+
+      return [
+        "review",
+        "reviews",
+      ].includes(type);
+    })
+    .map((item) => {
+      const slug = getContentSlug(item);
+
+      if (!slug) {
+        return null;
+      }
+
+      return {
+        url: `${SITE_URL}/reviews/${slug}`,
+        lastModified: getLastModified(item),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      };
+    })
+    .filter(Boolean);
+}
+
+/* ============================================================
+   REMOVE DUPLICATES
+============================================================ */
+
+function removeDuplicateUrls(pages) {
+  return Array.from(
+    new Map(
+      pages.map((page) => [
+        page.url,
+        page,
+      ])
+    ).values()
+  );
+}
+
+/* ============================================================
+   FALLBACK
+============================================================ */
+
+function getFallbackSitemap() {
+  return getStaticPages();
+}
+
+/* ============================================================
+   MAIN SITEMAP
 ============================================================ */
 
 export default async function sitemap() {
   try {
+    console.log("🗺️ Generating EVInsights sitemap...");
+
     const snapshot = await getSiteSnapshot();
 
     const vehicles = Array.isArray(snapshot?.vehicles)
@@ -93,284 +380,44 @@ export default async function sitemap() {
       ? snapshot.content
       : [];
 
-    /* ========================================================
-       STATIC PAGES
-    ======================================================== */
+    console.log(
+      `🚗 Vehicles: ${vehicles.length}`
+    );
 
-    const staticPages = [
-      {
-        url: `${SITE_URL}/`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 1.0,
-      },
+    console.log(
+      `🏷️ Brands: ${brands.length}`
+    );
 
-      {
-        url: `${SITE_URL}/cars`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 0.95,
-      },
-
-      {
-        url: `${SITE_URL}/brands`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.85,
-      },
-
-      {
-        url: `${SITE_URL}/articles`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 0.85,
-      },
-
-      {
-        url: `${SITE_URL}/reviews`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.8,
-      },
-
-      {
-        url: `${SITE_URL}/guides`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.8,
-      },
-
-      {
-        url: `${SITE_URL}/compare`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.7,
-      },
-
-      /* ======================================================
-         CALCULATORS
-      ====================================================== */
-
-      {
-        url: `${SITE_URL}/calculators/charging-cost`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.65,
-      },
-
-      {
-        url: `${SITE_URL}/calculators/charging-time`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.65,
-      },
-
-      {
-        url: `${SITE_URL}/calculators/range-estimator`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.65,
-      },
-
-      {
-        url: `${SITE_URL}/calculators/running-cost`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.65,
-      },
-
-      /* ======================================================
-         INFORMATIONAL PAGES
-      ====================================================== */
-
-      {
-        url: `${SITE_URL}/about`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.5,
-      },
-
-      {
-        url: `${SITE_URL}/contact`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.5,
-      },
-
-      {
-        url: `${SITE_URL}/privacy-policy`,
-        lastModified: new Date(),
-        changeFrequency: "yearly",
-        priority: 0.3,
-      },
-
-      {
-        url: `${SITE_URL}/terms`,
-        lastModified: new Date(),
-        changeFrequency: "yearly",
-        priority: 0.3,
-      },
-    ];
-
-    /* ========================================================
-       VEHICLE PAGES
-    ======================================================== */
-
-    const vehiclePages = vehicles
-      .filter((vehicle) => {
-        /*
-         * Approved vehicles preferred.
-         * If verification/status isn't present,
-         * don't unnecessarily hide the record.
-         */
-
-        if (
-          vehicle?.verification?.status
-        ) {
-          return (
-            vehicle.verification.status ===
-            "approved"
-          );
-        }
-
-        if (vehicle?.status) {
-          return (
-            vehicle.status === "active" ||
-            vehicle.status === "published"
-          );
-        }
-
-        return true;
-      })
-      .map((vehicle) => {
-        const slug = getVehicleSlug(vehicle);
-
-        if (!slug) {
-          return null;
-        }
-
-        return {
-          url: `${SITE_URL}/vehicles/${slug}`,
-          lastModified:
-            getLastModified(vehicle),
-          changeFrequency: "weekly",
-          priority: 0.9,
-        };
-      })
-      .filter(Boolean);
-
-    /* ========================================================
-       BRAND PAGES
-    ======================================================== */
-
-    const brandPages = brands
-      .map((brand) => {
-        const slug = getBrandSlug(brand);
-
-        if (!slug) {
-          return null;
-        }
-
-        return {
-          url: `${SITE_URL}/brands/${slug}`,
-          lastModified:
-            getLastModified(brand),
-          changeFrequency: "weekly",
-          priority: 0.75,
-        };
-      })
-      .filter(Boolean);
-
-    /* ========================================================
-       ARTICLE PAGES
-    ======================================================== */
-
-    const articlePages = content
-      .filter((item) => {
-        const type = getContentType(item);
-
-        return [
-          "article",
-          "articles",
-          "news",
-          "guide",
-        ].includes(type);
-      })
-      .map((item) => {
-        const slug = getContentSlug(item);
-
-        if (!slug) {
-          return null;
-        }
-
-        return {
-          url: `${SITE_URL}/articles/${slug}`,
-          lastModified:
-            getLastModified(item),
-          changeFrequency: "monthly",
-          priority: 0.7,
-        };
-      })
-      .filter(Boolean);
-
-    /* ========================================================
-       REVIEW PAGES
-    ======================================================== */
-
-    const reviewPages = content
-      .filter((item) => {
-        const type = getContentType(item);
-
-        return [
-          "review",
-          "reviews",
-        ].includes(type);
-      })
-      .map((item) => {
-        const slug = getContentSlug(item);
-
-        if (!slug) {
-          return null;
-        }
-
-        return {
-          url: `${SITE_URL}/reviews/${slug}`,
-          lastModified:
-            getLastModified(item),
-          changeFrequency: "monthly",
-          priority: 0.7,
-        };
-      })
-      .filter(Boolean);
-
-    /* ========================================================
-       COMBINE EVERYTHING
-    ======================================================== */
-
-    const allPages = [
-      ...staticPages,
-      ...vehiclePages,
-      ...brandPages,
-      ...articlePages,
-      ...reviewPages,
-    ];
-
-    /* ========================================================
-       REMOVE DUPLICATE URLs
-    ======================================================== */
-
-    const uniquePages = Array.from(
-      new Map(
-        allPages.map((page) => [
-          page.url,
-          page,
-        ])
-      ).values()
+    console.log(
+      `📝 Content: ${content.length}`
     );
 
     /* ========================================================
-       FINAL RESULT
+       BUILD ALL URLS
     ======================================================== */
+
+    const allPages = [
+      ...getStaticPages(),
+
+      ...getVehiclePages(vehicles),
+
+      ...getBrandPages(brands),
+
+      ...getArticlePages(content),
+
+      ...getReviewPages(content),
+    ];
+
+    /* ========================================================
+       REMOVE DUPLICATES
+    ======================================================== */
+
+    const uniquePages =
+      removeDuplicateUrls(allPages);
+
+    console.log(
+      `✅ Sitemap URLs: ${uniquePages.length}`
+    );
 
     return uniquePages;
   } catch (error) {
@@ -380,115 +427,10 @@ export default async function sitemap() {
     );
 
     /*
-     * Database unavailable hone par bhi
-     * important static URLs sitemap me rahenge.
+     * Database unavailable hone par
+     * static URLs phir bhi available rahenge.
      */
 
-    return [
-      {
-        url: `${SITE_URL}/`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 1.0,
-      },
-
-      {
-        url: `${SITE_URL}/cars`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 0.95,
-      },
-
-      {
-        url: `${SITE_URL}/brands`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.85,
-      },
-
-      {
-        url: `${SITE_URL}/articles`,
-        lastModified: new Date(),
-        changeFrequency: "daily",
-        priority: 0.85,
-      },
-
-      {
-        url: `${SITE_URL}/reviews`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.8,
-      },
-
-      {
-        url: `${SITE_URL}/guides`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.8,
-      },
-
-      {
-        url: `${SITE_URL}/compare`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.7,
-      },
-
-      {
-        url: `${SITE_URL}/calculators/charging-cost`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.65,
-      },
-
-      {
-        url: `${SITE_URL}/calculators/charging-time`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.65,
-      },
-
-      {
-        url: `${SITE_URL}/calculators/range-estimator`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.65,
-      },
-
-      {
-        url: `${SITE_URL}/calculators/running-cost`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.65,
-      },
-
-      {
-        url: `${SITE_URL}/about`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.5,
-      },
-
-      {
-        url: `${SITE_URL}/contact`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.5,
-      },
-
-      {
-        url: `${SITE_URL}/privacy-policy`,
-        lastModified: new Date(),
-        changeFrequency: "yearly",
-        priority: 0.3,
-      },
-
-      {
-        url: `${SITE_URL}/terms`,
-        lastModified: new Date(),
-        changeFrequency: "yearly",
-        priority: 0.3,
-      },
-    ];
+    return getFallbackSitemap();
   }
 }
