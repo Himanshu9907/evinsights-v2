@@ -183,6 +183,24 @@
     |-- add-vitara.mjs
     |-- add-xev-9.mjs
     |-- add-xev-9e-images.mjs
+    |-- auto-importer
+        |-- canonical-vehicle.mjs
+        |-- fixtures
+            |-- toyota-urban-cruiser-ebella.mjs
+        |-- normalize.mjs
+        |-- pipeline.mjs
+        |-- preview.mjs
+        |-- run.mjs
+        |-- sources
+            |-- index.mjs
+            |-- manual.source.mjs
+            |-- source-registry.mjs
+            |-- source.interface.mjs
+        |-- test-toyota-ebella.mjs
+        |-- transformers
+            |-- index.mjs
+            |-- vehicle.transformer.mjs
+        |-- validate.mjs
     |-- data-check.mjs
     |-- db-init.mjs
     |-- db-seed.mjs

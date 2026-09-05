@@ -50,7 +50,7 @@
 
 import Link from "next/link";
 import NavbarSearch from "./NavbarSearch";
-import NavbarLanguage from "./NavbarLanguage";
+// import NavbarLanguage from "./NavbarLanguage";
 import NavbarCurrency from "./NavbarCurrency";
 import NavbarTheme from "./NavbarTheme";
 
@@ -74,7 +74,7 @@ export default function NavbarMobileMenu({ open, onClose }) {
 
         {/* Language / Currency / Theme */}
         <div className="navbar-mobile-menu__controls">
-          <NavbarLanguage />
+          {/* <NavbarLanguage /> */}
           <NavbarCurrency />
           <NavbarTheme />
         </div>
